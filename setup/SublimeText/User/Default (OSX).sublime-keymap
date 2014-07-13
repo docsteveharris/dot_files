@@ -1,0 +1,172 @@
+[
+	// vim cursor movement
+
+	// { "keys": ["ctrl+h"], "command": "move", "args": {"mode": "characters", "forward": false} },
+	// { "keys": ["ctrl+l"], "command": "move", "args": {"mode": "characters", "forward": true} },
+	// { "keys": ["ctrl+j"], "command": "move", "args": {"mode": "lines", "forward": false} },
+	// { "keys": ["ctrl+k"], "command": "move", "args": {"mode": "lines", "forward": true} },
+
+	// emacs word movement forward and back
+
+	// { "keys": ["ctrl+alt+b"], "command": "move", "args": {"by": "subwords", "forward": false} },
+	// { "keys": ["ctrl+alt+f"], "command": "move", "args": {"by": "subword_ends", "forward": true} },
+	// { "keys": ["ctrl+alt+shift+b"], "command": "move", "args": {"by": "subwords", "forward": false, "extend": true} },
+	// { "keys": ["ctrl+alt+shift+f"], "command": "move", "args": {"by": "subword_ends", "forward": true, "extend": true} },
+
+	// comment blocks
+	{ "keys": ["super+forward_slash"], "command": "toggle_comment", "args": { "block": false } },
+	{ "keys": ["ctrl+super+forward_slash"], "command": "toggle_comment", "args": { "block": true } },
+
+	{ "keys": ["super+ctrl+w"], "command": "toggle_setting", "args": {"setting": "word_wrap"}},
+
+	{ "keys": ["super+shift+t"], "command": "delete_trailing_spaces" },
+	{ "keys": ["super+shift+w"], "command": "toggle_word_wrap" },
+
+    { "keys": ["ctrl+super+k"], "command": "swap_line_up" },
+	{ "keys": ["ctrl+super+j"], "command": "swap_line_down" },
+	{ "keys": ["ctrl+super+h"], "command": "unindent" },
+	{ "keys": ["ctrl+super+l"], "command": "indent" },
+	// NOTE: 2012-07-26 - via http://www.sublimetext.com/forum/viewtopic.php?f=4&t=4427
+	// { "keys": ["escape"], "command": "run_macro_file",
+	//         "args": {"file": "Packages/User/Really_Go_To_Command_mode.sublime-macro"},
+	//         "context":
+	//         [
+	//             { "key": "auto_complete_visible", "operator": "equal", "operand": true },
+	//             { "key": "setting.command_mode", "operand": false },
+	//             { "key": "setting.is_widget", "operand": false }
+	//         ]
+	// },
+	// swap build to R
+	{ "keys": ["f7"], "command": "build" },
+	{ "keys": ["super+r"], "command": "build" },
+	{ "keys": ["super+shift+r"], "command": "build", "args": {"variant": "Run"} },
+	// super+r previously bound to go to symbol so swap this to super+b
+	{ "keys": ["super+b"], "command": "show_overlay", "args": {"overlay": "goto", "text": "@"} },
+	// textmate comment banner: via http://rathersplendid.net/home/customise-sublime-text-2
+	{ "keys": ["ctrl+super+c"], "command": "insert_snippet", "args": {"contents": "${TM_COMMENT_START/s*$//} ==${1/./=/g}==${TM_COMMENT_END/^s*(.+)/ $1/}\n${TM_COMMENT_START/s*$//} = ${1:Banner} =${TM_COMMENT_END/^s*(.+)/ $1/}\n${TM_COMMENT_START/s*$//} ==${1/./=/g}==${TM_COMMENT_END/^s*(.+)/ $1/}"}},
+	// https://github.com/Stuk/sublime-edit-history
+	{ "keys": ["super+["], "command": "previous_edit" },
+	{ "keys": ["super+]"], "command": "next_edit" },
+
+
+	// NOTE: 2012-10-25 - via http://tomschenkjr.net/using-sublime-text-2-for-r/
+	// Modified Sublime-REPL keybindings for an "R-friendly" set of shortcuts.
+	// Copy and paste this text into the Key Bindings - User (under Preferences menu).
+	// For more information, see http://tomschenkjr.net/2012/05/17/using-sublime-text-2-for-r/
+
+	// Executes a selection of text in REPL, latter only displays code and does not execute
+	{ "keys": ["ctrl+shift+r"], "command": "repl_transfer_current", "args": {"scope": "selection"}},
+	{ "keys": ["ctrl+shift+r", "r"], "command": "repl_transfer_current", "args": {"scope": "selection", "action":"view_write"}},
+
+	// Executes the entire file (build) in REPL, latter only displays code and does not execute
+	{ "keys": ["ctrl + f7"], "command": "repl_transfer_current", "args": {"scope": "file"}},
+	{ "keys": ["ctrl + f7", "r"], "command": "repl_transfer_current", "args": {"scope": "file", "action":"view_write"}},
+
+	// Executes line(s) of text in REPL terminal, latter only displays code and does not execute
+	{ "keys": ["ctrl+alt+r"], "command": "repl_transfer_current", "args": {"scope": "lines"}},
+	{ "keys": ["ctrl+alt+r", "r"], "command": "repl_transfer_current", "args": {"scope": "lines", "action":"view_write"}},
+
+	// Executes a block (e.g., a custom function) of text in REPL terminal, latter only displays code and does not execute
+	{ "keys": ["ctrl+shift+alt+r"], "command": "repl_transfer_current", "args": {"scope": "block"}},
+	{ "keys": ["ctrl+shift+alt+r", "r"], "command": "repl_transfer_current", "args": {"scope": "block", "action":"view_write"}},
+
+	// CHANGED: 2012-12-18 -
+	// Auto-pair backtick (from single-quotes)
+	// Auto-pair single quotes
+	{ "keys": ["`"], "command": "insert_snippet", "args": {"contents": "`$0'"}, "context":
+		[
+			{ "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
+			{ "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+			{ "key": "following_text", "operator": "regex_contains", "operand": "^(?:\t| |\\)|]|\\}|>|$)", "match_all": true },
+			{ "key": "preceding_text", "operator": "not_regex_contains", "operand": "['a-zA-Z0-9_]$", "match_all": true },
+			{ "key": "eol_selector", "operator": "not_equal", "operand": "string.quoted.single", "match_all": true }
+		]
+	},
+	{ "keys": ["`"], "command": "insert_snippet", "args": {"contents": "`${0:$SELECTION}'"}, "context":
+		[
+			{ "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
+			{ "key": "selection_empty", "operator": "equal", "operand": false, "match_all": true }
+		]
+	},
+	{ "keys": ["`"], "command": "move", "args": {"by": "characters", "forward": true}, "context":
+		[
+			{ "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
+			{ "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+			{ "key": "following_text", "operator": "regex_contains", "operand": "^'", "match_all": true }
+		]
+	},
+	{ "keys": ["backspace"], "command": "run_macro_file", "args": {"file": "Packages/Default/Delete Left Right.sublime-macro"}, "context":
+		[
+			{ "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
+			{ "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+			{ "key": "preceding_text", "operator": "regex_contains", "operand": "`$", "match_all": true },
+			{ "key": "following_text", "operator": "regex_contains", "operand": "^'", "match_all": true }
+		]
+	},
+
+	{ "keys": ["ctrl+tab"], "command": "reveal_in_side_bar_and_focus" },
+	// CHANGED: 2013-03-04 - changed key-binding for focus group so it does not conflict with totalspaces
+		{ "keys": ["ctrl+alt+1"], "command": "focus_group", "args": { "group": 0 } },
+	{ "keys": ["ctrl+alt+2"], "command": "focus_group", "args": { "group": 1 } },
+	{ "keys": ["ctrl+alt+3"], "command": "focus_group", "args": { "group": 2 } },
+	{ "keys": ["ctrl+alt+4"], "command": "focus_group", "args": { "group": 3 } },
+
+
+	{ "keys": ["ctrl+f12"],
+		"command": "side_bar_open_in_browser" ,
+		"args":{"paths":[], "type":"testing"}
+	},
+
+
+    {
+        "keys": ["f12"], "command": "browser_refresh", "args": {
+            "auto_save": true,
+            "delay": 0.0,
+            "activate_browser": true,
+            "browser_name" : "Chrome"
+        }
+    },
+    // NOTE: 2013-07-29 - MarkAndMove key mapping placed below and move to brackets re-assigned
+	// { "keys": ["ctrl+m"], "command": "move_to", "args": {"to": "brackets"} },
+	{ "keys": ["ctrl+super+m"], "command": "move_to", "args": {"to": "brackets"} },
+
+    { "keys": ["ctrl+shift+tab"], "command": "mark_and_move_window_select" },
+    { "keys": ["ctrl+tab"], "command": "mark_and_move_window_toggle" },
+    { "keys": ["ctrl+m"], "command": "mark_and_move_do_it_all" },
+    { "keys": ["alt+m"], "command": "mark_and_move_next" },
+    { "keys": ["alt+shift+m"], "command": "mark_and_move_prev" },
+    { "keys": ["ctrl+shift+m"], "command": "mark_and_move_recall" },
+    { "keys": ["ctrl+alt+m"], "command": "mark_and_move_clear" },
+
+    // MaxPane
+    { "keys": ["super+shift+enter"], "command": "max_pane" },
+    { "keys": ["super+alt+ctrl+right"], "command": "shift_pane" },
+    { "keys": ["super+alt+ctrl+left"], "command": "unshift_pane" },
+
+	// NOTE: 2014-04-15 - ctrl-u is mapped by 'Open URL' package to open_url
+	// This conflicts with vi but the package is an archive so cannot modify the 
+	// keybinding directly. Instead do so here.   
+	// but this doesn't work as it doesn't over-ride
+    // { "keys": ["super+ctrl+u"], "command": "open_url" }
+
+	{ "keys": ["ctrl+shift+1"], "command": "focus_group", "args": { "group": 0 } },
+	{ "keys": ["ctrl+shift+2"], "command": "focus_group", "args": { "group": 1 } },
+	{ "keys": ["ctrl+shift+3"], "command": "focus_group", "args": { "group": 2 } },
+	{ "keys": ["ctrl+shift+4"], "command": "focus_group", "args": { "group": 3 } },
+	{ "keys": ["ctrl+shift+5"], "command": "focus_group", "args": { "group": 4 } },
+	{ "keys": ["ctrl+shift+6"], "command": "focus_group", "args": { "group": 5 } },
+	{ "keys": ["ctrl+shift+7"], "command": "focus_group", "args": { "group": 6 } },
+	{ "keys": ["ctrl+shift+8"], "command": "focus_group", "args": { "group": 7 } },
+	{ "keys": ["ctrl+shift+9"], "command": "focus_group", "args": { "group": 8 } },
+	{ "keys": ["ctrl+shift+alt+1"], "command": "move_to_group", "args": { "group": 0 } },
+	{ "keys": ["ctrl+shift+alt+2"], "command": "move_to_group", "args": { "group": 1 } },
+	{ "keys": ["ctrl+shift+alt+3"], "command": "move_to_group", "args": { "group": 2 } },
+	{ "keys": ["ctrl+shift+alt+4"], "command": "move_to_group", "args": { "group": 3 } },
+	{ "keys": ["ctrl+shift+alt+5"], "command": "move_to_group", "args": { "group": 4 } },
+	{ "keys": ["ctrl+shift+alt+6"], "command": "move_to_group", "args": { "group": 5 } },
+	{ "keys": ["ctrl+shift+alt+7"], "command": "move_to_group", "args": { "group": 6 } },
+	{ "keys": ["ctrl+shift+alt+8"], "command": "move_to_group", "args": { "group": 7 } },
+	{ "keys": ["ctrl+shift+alt+9"], "command": "move_to_group", "args": { "group": 8 } },
+	{ "keys": ["ctrl+0"], "command": "focus_side_bar" },
+
+]

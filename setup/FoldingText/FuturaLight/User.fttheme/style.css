@@ -1,0 +1,104 @@
+/*
+ * Copyright (c) 2011-2012 Hog Bay Software. All rights reserved.
+ */
+html {
+	-webkit-font-smoothing: antialiased;
+}
+body {
+	font-family: "Futura", Courier, monospace;
+	font-size: 1.2rem;
+	line-height: 1.4;
+	background: rgb(97%,97%,97%);
+	color: rgb(20%,20%,20%);
+}
+.tabs {
+	font-family:HalfWidthSpace;
+}
+.code, .codeblock {
+	font-family: Courier, monospace;
+}
+.code, .codeblock > .content > .text {
+	background: rgb(90%,90%,90%);
+}
+/*
+.empty + .codeblock > .content, .codeblock + .empty > .content { 
+	border-top: 0.5rem solid rgb(85%,85%,85%);
+}
+*/
+.blockquote {
+	font-style:oblique;
+}
+.blockquote > .content > .lead.syntax,
+.unordered > .content > .lead.syntax,
+.ordered > .content > .lead.syntax,
+.heading > .content > .lead.syntax,
+.heading > .content > .trail.syntax   {
+	color: rgb(20%,20%,20%);
+}
+
+.heading > .content > .lead.syntax,
+.heading > .content > .text {
+	font-size: 1.3rem;
+	font-weight: 200;
+	color: rgb(0%,0%,0%);
+}
+.heading > .content > .mode {
+	font-size: 0.95rem;
+}
+.heading .lead.syntax.currentSyntaxBlock  {
+	color: gray;
+}
+
+.headerLeadSyntaxText:hover {
+	text-decoration:underline;
+	cursor: pointer;
+}
+.htmltag {
+	color:rgb(20%,20%,50%);
+}
+.htmltag-attributevalue {
+	color:rgb(20%,50%,20%);
+}
+@font-face {
+	font-family: CourierFoldEllipse;
+	src: url('./fonts/CourierFoldEllipse.ttf');
+}
+.foldafter .content:after {
+	font-family: CourierFoldEllipse, Courier;
+	font-style:normal;
+	font-weight:normal;
+	content:" …";
+}
+.editorTopFold {
+	color: rgb(97%,97%,97%);
+	background: rgb(20%,20%,20%);
+}
+@font-face {
+	font-family: CourierBulletDone;
+	src: url('./fonts/CourierBulletDone.ttf');
+}
+@font-face {
+	font-family: CourierBulletNotDone;
+	src: url('./fonts/CourierBulletNotDone.ttf');
+}
+.unordered.todoMode .lead {
+	font-family:CourierBulletNotDone, Courier;
+}
+div[done].unordered.todoMode .lead {
+	font-family:CourierBulletDone, Courier;
+}
+div[low] span[class~=text] {
+    color: rgb(116, 166, 251);
+}
+div[high] span[class~=text] {
+	color: rgb(228, 113, 112);
+}
+
+div[hl] span[class~=text] {
+	background: rgb(255, 252, 188);
+}
+
+div[done].unordered.todoMode span[class~=text] {
+    text-decoration: line-through;
+    color: gray;
+}
