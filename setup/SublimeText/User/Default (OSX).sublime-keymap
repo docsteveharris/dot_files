@@ -144,8 +144,8 @@
     { "keys": ["super+alt+ctrl+left"], "command": "unshift_pane" },
 
 	// NOTE: 2014-04-15 - ctrl-u is mapped by 'Open URL' package to open_url
-	// This conflicts with vi but the package is an archive so cannot modify the 
-	// keybinding directly. Instead do so here.   
+	// This conflicts with vi but the package is an archive so cannot modify the
+	// keybinding directly. Instead do so here.
 	// but this doesn't work as it doesn't over-ride
     // { "keys": ["super+ctrl+u"], "command": "open_url" }
 
@@ -169,4 +169,14 @@
 	{ "keys": ["ctrl+shift+alt+9"], "command": "move_to_group", "args": { "group": 8 } },
 	{ "keys": ["ctrl+0"], "command": "focus_side_bar" },
 
+	{ "keys": ["j", "j"], "command": "exit_auto_complete_and_insert_mode",
+    "context":
+    [
+        { "key": "setting.command_mode", "operand": false },
+        { "key": "setting.is_widget", "operand": false }
+    ]
+	},
+
+	// https://github.com/tmanderson/VintageLines
+	{"keys": ["super+shift+0"], "command": "toggle_setting", "args": {"setting": "vintage_lines.force_mode"}},
 ]
