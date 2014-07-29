@@ -3,7 +3,15 @@
 	[
 		{
 			"follow_symlinks": true,
-			"path": "setup"
+			"path": "."
+		},
+		{
+			"follow_symlinks": true,
+			"path": "/Users/steve/usr/scripts"
+		},
+		{
+			"follow_symlinks": true,
+			"path": "/Users/steve/usr/github"
 		}
 	]
 }
