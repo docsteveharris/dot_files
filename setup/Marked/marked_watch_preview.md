@@ -1,7 +1,74 @@
-keywords: [@guideline, @icm, @management]
+Basic movement
+h j k l - left; down; up; right
+b w - word back/forward
+e - end of word
 
-Intensive Care Society: Core Standards for Intensive Care Units, 2013
+Viewport movement (i.e. without moving the cursor position)
+^e ^y - scroll line up / down
+^u ^d - scroll page up/ page down
+^b ^f - ditto
 
-## Selected notes
+zt zz zb - scroll window so current line is at top/middle/bottom
 
-Large ICUs should be divided into pods of 8-15 patients. [2013, #10047]5 day blocks of day shifts on ICU have been shown to reduce burn-out in intensivists and maintain the same patient outcomes as 7 day blocks [2013, #10047]In general, the Consultant/ Patient ratio should not exceed a range between 1:8 * 1:15 ratio should not exceed 1:8 [2013, #10047]A Consultant in Intensive Care Medicine must be immediately available 24/7, be able tattend within 30 minutes anmust undertake twice daily ward round [2013, #10047]Consultant Intensivists participating in a duty rotdelivering other services, such as emergency medicineacute general medicine and anaesthesia (includinobstetric anaesthesia), while covering the criticacare unit. [2013, #10047]The ward round must have daily input fronursing, microbiologypharmacy and physiotherap [2013, #10047]Level 3 patients (level guided by a registered nurse/patient ratiof a minimum 1:1 to delive [2013, #10047]Level 2 patients (level guided by ICS levels of care) require a registered nurse/ patient ratio oa minimum 1:2 to deliver direccare [2013, #10047]Units should not utilise greatethan 20% of registered nursefrom bank/agency on any onshift when they are NOT thei [2013, #10047]All patients unable to take oral nutrition support (enteral or parenteral) commenced on rehabilitation [2013, #10047]Admission to Intensive Carshould occur within 4 hours omaking the decision to admi [2013, #10047]Patients should not be transferred to other Intensive Care Units for non-clinicareason [2013, #10047]Discharge from Intensive Care to a general ward should occur within 4 hours of the decision [2013, #10047]evel 3 units should have access to a Regional Home Ventilation and weaning unit. Arrangements should be in place to collaboratively manage patients with weaning difficulties and failure, including the transfer of some patients with complex weaning problems to the Regional centre [2013, #10047]The ICU should participate in National database for Adult Critical Care [2013, #10047]
+H M L - cursor to high / medium / low part of page
+
+gg G - top bottom of file
+
+y - yank (then follow by movement or selection command)
+yy - yank a whole line
+c - cut (then follow by movement or selection command)
+cc - cut a whole line
+p P - paste after / before
+
+cc or S - change current line
+c - change (then follow by movement or selection command)
+~ switch case and advance cursor
+
+## Visual mode selecting
+- accessible only from normal mode (not from insert mode)
+V - enter visual line mode
+v - enter visual mode
+o - swap position of cursor to opposite end of selection
+
+* # - find word under cursor forward, back
+% - find matching bracket if on bracket, else go to opening bracket, then toggle to closing @good see http://ow.ly/ymM2y @good see http://ow.ly/ymM2y
+
+; , - find next matching character forward, back
+
+## Macros
+qq - start recording a macro
+q - stop recording
+@q - play back last macro
+5@q - to play back macro 5 times
+
+# Log
+
+## Entering and exiting normal mode 
+
+Seems best to remap this. Turns out that escape was only ever used because the escape key way in the position of the tab key on the keyboard in which this was developed.
+Currently mapped to option-v
+Will do the same in sublime text so I get used to it
+Ideally should do the same in the terminal too
+
+### 140721 update
+
+now mapped to `jj` in sublime text
+struggling to work out how to do the same for ubiquitous vim 
+
+Found [this](http://stevelosh.com/blog/2012/10/a-modern-space-cadet/#modern-software) post from Steve Losh
+
+
+
+### 140727 update
+
+- remapped Ubiquitous Vim to double jj outside of sublime text
+- ugly because it involves deleting two key presses
+- similar technique used in sublime text
+
+### 140729 going to try mapping single tap caps lock to escape in iTerm
+
+
+
+
+
+
