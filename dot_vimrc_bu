@@ -1,0 +1,143 @@
+" Use Vim settings, rather then Vi settings. This setting must be as early as
+" possible, as it has side effects.
+set nocompatible              " be iMproved, required
+filetype off                  " required by vundle
+
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+Plugin 'croaky/vim-colors-github'
+Plugin 'kien/ctrlp.vim'
+Plugin 'vim-scripts/The-NERD-tree'
+Plugin 'rking/ag.vim'
+Plugin 'altercation/vim-colors-solarized'
+
+" allows us to more easily work with markdown files
+" Plugin 'tpope/vim-markdown'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+
+" allows us to comment/uncomment lines and content
+" Plugin 'tpope/vim-commentary.git'
+Plugin 'tomtom/tcomment_vim'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+
+
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+" remap jj to take me back to normal mode
+
+let mapleader = " "
+inoremap jj <ESC>
+
+" Problems with color display inside tmux
+" http://sunaku.github.io/vim-256color-bce.html
+" if &term =~ '256color'
+  " disable Background Color Erase (BCE) so that color schemes
+  " render properly when inside 256-color tmux and GNU screen.
+  " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+"   set t_ut=
+" endif
+
+" source the vimrc file after saving it. This way, you don't have to reload Vim to see the changes.
+if has("autocmd")
+  augroup myvimrchooks
+   au!
+   autocmd bufwritepost .vimrc source ~/.vimrc
+  augroup END
+endif
+
+" Configure the cursor so that it changes shape in insert mode
+" http://vim.wikia.com/wiki/Configuring_the_cursor
+if &term =~ '^xterm'
+  " solid underscore
+  let &t_SI .= "\<Esc>[4 q"
+  " solid block
+  let &t_EI .= "\<Esc>[2 q"
+  " 1 or 0 -> blinking block
+  " 3 -> blinking underscore
+  " Recent versions of xterm (282 or above) also support
+  " 5 -> blinking vertical bar
+  " 6 -> solid vertical bar
+endif
+
+" dotfiles settings from thoughbot
+" https://github.com/thoughtbot/dotfiles/blob/master/vimrc
+
+set backspace=2   " Backspace deletes like most programs in insert mode
+set history=50
+set ruler         " show the cursor position all the time
+set showcmd       " display incomplete commands
+set laststatus=2  " Always display the status line
+set autowrite     " Automatically :write before running commands
+set expandtab     " convert tabs to spaces
+set shiftwidth=4  " set tab size
+set number        " turn on line numbers
+
+" Basic beginnger vim set up
+" https://gist.github.com/pthrasher/3933522
+" We have VCS -- we don't need this stuff.
+set nobackup " We have vcs, we don't need backups.
+set nowritebackup " We have vcs, we don't need backups.
+set noswapfile " They're just annoying. Who likes them?
+
+" set-up ctrlp to include hidden files in its search
+let g:ctrlp_show_hidden=1
+
+" disable ctrlp's feature where it tries to intelligently work out the current working directory to search within
+let g:ctrlp_working_path_mode=0
+
+" don't let ctrlp take over the screen!
+let g:ctrlp_max_height=30
+
+" disable folding because it is evil
+set nofoldenable
+
+" remove whitespace on save
+autocmd BufWritePre * :%s/\s\+$//e
+
+" Color scheme
+" colorscheme railscasts.vim
+" colorscheme github
+set background=dark
+colorscheme solarized
+" highlight NonText guibg=#060606
+" highlight Folded  guibg=#0A0A0A guifg=#9090D0
+
+" delay when entering normal mode
+" http://www.johnhawthorn.com/2012/09/vi-escape-delays/
+set timeoutlen=1000
+set timeoutlen=0
+
+" getting colors to work inside tmux
+set t_Co=256
+
+
+" Bundle 'tomtom/tcomment_vim'
+" faster shortcut for commenting. Requires T-Comment plugin
+map <leader>c <c-_><c-_>
+
+" http://stackoverflow.com/questions/5602767/why-is-vim-not-detecting-my-coffescript-filetype#5602813
+filetype off
+" switch filetype back-on
+filetype plugin indent on    " required
+
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+syntax on
