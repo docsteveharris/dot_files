@@ -1,11 +1,8 @@
-" Use Vim settings, rather then Vi settings. This setting must be as early as
-" possible, as it has side effects.
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-syntax on
-
 " set the runtime path to include Vundle and initialize
+" =====================================================
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
@@ -14,19 +11,21 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'croaky/vim-colors-github'
+Plugin 'tpope/vim-markdown'
+" Plugin 'tpope/vim-commentary'
+Plugin 'tomtom/tcomment_vim'
+
 Plugin 'kien/ctrlp.vim'
 Plugin 'vim-scripts/The-NERD-tree'
-Plugin 'rking/ag.vim'
+Plugin 'myusuf3/numbers.vim'
+Plugin 'terryma/vim-multiple-cursors'
+" Powerline should not be run from vundle AND pip simultaneously
+" Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+
 Plugin 'altercation/vim-colors-solarized'
-
-" allows us to more easily work with markdown files
-" Plugin 'tpope/vim-markdown'
-" Plugin 'godlygeek/tabular'
-" Plugin 'plasticboy/vim-markdown'
-
-" allows us to comment/uncomment lines and content
-" Plugin 'tpope/vim-commentary.git'
+Plugin 'croaky/vim-colors-github'
+Plugin 'daylerees/colour-schemes', { 'rtp': 'vim/' }
+Plugin 'tpope/vim-fugitive'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -42,19 +41,70 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
-" remap jj to take me back to normal mode
+" =========================================
 
-let mapleader = " "
-inoremap jj <ESC>
+set backspace=2   " Backspace deletes like most programs in insert mode
+set nobackup
+set nowritebackup
+set noswapfile    " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
+set history=50
+set ruler         " show the cursor position all the time
+set showcmd       " display incomplete commands
+set incsearch     " do incremental searching
+set laststatus=2  " Always display the status line
+set autowrite     " Automatically :write before running commands
 
-" Problems with color display inside tmux
-" http://sunaku.github.io/vim-256color-bce.html
-" if &term =~ '256color'
-  " disable Background Color Erase (BCE) so that color schemes
-  " render properly when inside 256-color tmux and GNU screen.
-  " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
-"   set t_ut=
-" endif
+" Softtabs, 2 spaces
+set tabstop=2
+set shiftwidth=2
+set shiftround
+set expandtab
+
+" Display extra whitespace
+set list listchars=tab:»·,trail:·
+
+" Make it obvious where 80 characters is
+set textwidth=80
+set colorcolumn=+1
+
+" Numbers
+" set number " standard numbers
+" To switch on this feature enter the command “:set rnu”
+" and to switch off this feature enter the command “:set nornu”
+set rnu " relative line numbers
+set numberwidth=5
+
+set showbreak=↪
+
+" source the vimrc file after saving it. This way, you don't have to reload Vim to see the changes.
+" http://www.bestofvim.com/tip/auto-reload-your-vimrc/
+augroup reload_vimrc " {
+    autocmd!
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END " }
+
+
+augroup vimrcEx
+  autocmd!
+
+  " When editing a file, always jump to the last known cursor position.
+  " Don't do it for commit messages, when the position is invalid, or when
+  " inside an event handler (happens when dropping a file on gvim).
+  autocmd BufReadPost *
+    \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal g`\"" |
+    \ endif
+
+  " Set syntax highlighting for specific file types
+  autocmd BufRead,BufNewFile *.md set filetype=markdown
+
+  " Enable spellchecking for Markdown
+  autocmd FileType markdown setlocal spell
+
+  " Automatically wrap at 80 characters for Markdown
+  autocmd BufRead,BufNewFile *.md setlocal textwidth=80
+
+augroup END
 
 " Configure the cursor so that it changes shape in insert mode
 " http://vim.wikia.com/wiki/Configuring_the_cursor
@@ -70,58 +120,56 @@ if &term =~ '^xterm'
   " 6 -> solid vertical bar
 endif
 
-" dotfiles settings from thoughbot
-" https://github.com/thoughtbot/dotfiles/blob/master/vimrc
+" Tab completion
+" ==============
+" will insert tab at beginning of line,
+" will use completion if not at beginning
+set wildmode=list:longest,list:full
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
+inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <S-Tab> <c-n>
 
-set backspace=2   " Backspace deletes like most programs in insert mode
-set history=50
-set ruler         " show the cursor position all the time
-set showcmd       " display incomplete commands
-set laststatus=2  " Always display the status line
-set autowrite     " Automatically :write before running commands
-set expandtab     " convert tabs to spaces
-set shiftwidth=4  " set tab size
-set number        " turn on line numbers
-
-" Basic beginnger vim set up
-" https://gist.github.com/pthrasher/3933522
-" We have VCS -- we don't need this stuff.
-set nobackup " We have vcs, we don't need backups.
-set nowritebackup " We have vcs, we don't need backups.
-set noswapfile " They're just annoying. Who likes them?
-
-" set-up ctrlp to include hidden files in its search
-let g:ctrlp_show_hidden=1
-
-" disable ctrlp's feature where it tries to intelligently work out the current working directory to search within
-let g:ctrlp_working_path_mode=0
-
-" don't let ctrlp take over the screen!
-let g:ctrlp_max_height=30
-
-
-" remove whitespace on save
-autocmd BufWritePre * :%s/\s\+$//e
-
+" Color scheme etc
+" ================
+" getting colors to work inside tmux
+set t_Co=256
 " Color scheme
+
 " colorscheme railscasts.vim
-colorscheme github
-" set background=dark
-" colorscheme solarized
+
+" colorscheme github
 " highlight NonText guibg=#060606
 " highlight Folded  guibg=#0A0A0A guifg=#9090D0
 
-" delay when entering normal mode
-" http://www.johnhawthorn.com/2012/09/vi-escape-delays/
-set timeoutlen=1000
-set timeoutlen=0
+" Dayle-Rees colorschemes: Halflife tron
+" colorscheme halflife
 
-" getting colors to work inside tmux
-set t_Co=256
+set background=dark
+colorscheme solarized
 
-" allows us to more easily work with markdown files
-Bundle 'tpope/vim-markdown'
+" remap keys
+" ==========
+let mapleader = " "
+inoremap jj <ESC>
 
-" allows us to comment/uncomment lines and content
-Bundle 'tpope/vim-commentary.git'
+
+" save these commands to the end
+" ==============================
+" http://stackoverflow.com/questions/5602767/why-is-vim-not-detecting-my-coffescript-filetype#5602813
+filetype off
+filetype plugin indent on
+
+" Switch syntax highlighting on, when the terminal has colors
+" Also switch on highlighting the last used search pattern.
+if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
+  syntax on
+  set hlsearch
+endif
 
