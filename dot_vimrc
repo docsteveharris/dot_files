@@ -15,6 +15,8 @@ Plugin 'tpope/vim-markdown'
 " Plugin 'tpope/vim-commentary'
 Plugin 'tomtom/tcomment_vim'
 
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-fugitive'
 Plugin 'kien/ctrlp.vim'
 Plugin 'vim-scripts/The-NERD-tree'
 Plugin 'myusuf3/numbers.vim'
@@ -25,7 +27,15 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'croaky/vim-colors-github'
 Plugin 'daylerees/colour-schemes', { 'rtp': 'vim/' }
-Plugin 'tpope/vim-fugitive'
+Plugin 'tomasr/molokai'
+
+" directly work with databases
+Plugin 'vim-scripts/dbext.vim'
+Plugin 'vim-scripts/ZoomWin.vim'
+
+" send text from vim to running tmux session
+Plugin 'viershay/tslime.vim'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -68,13 +78,16 @@ set textwidth=80
 set colorcolumn=+1
 
 " Numbers
-" set number " standard numbers
+" need to set this on as well as relative line numbers
+" if you are using the numbers.vim package to toggle
+set number " standard numbers
 " To switch on this feature enter the command “:set rnu”
 " and to switch off this feature enter the command “:set nornu”
 set rnu " relative line numbers
 set numberwidth=5
 
 set showbreak=↪
+let NERDTreeShowHidden=1
 
 " source the vimrc file after saving it. This way, you don't have to reload Vim to see the changes.
 " http://www.bestofvim.com/tip/auto-reload-your-vimrc/
@@ -90,6 +103,7 @@ augroup vimrcEx
   " When editing a file, always jump to the last known cursor position.
   " Don't do it for commit messages, when the position is invalid, or when
   " inside an event handler (happens when dropping a file on gvim).
+  "
   autocmd BufReadPost *
     \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
     \   exe "normal g`\"" |
@@ -151,14 +165,30 @@ set t_Co=256
 " Dayle-Rees colorschemes: Halflife tron
 " colorscheme halflife
 
-set background=dark
-colorscheme solarized
+" set background=dark
+" colorscheme solarized
+
+let g:rehash256 = 1
+colorscheme molokai
 
 " remap keys
 " ==========
-let mapleader = " "
+let mapleader = " " " i.e. if you type <space> in normal mode then any key after that 
 inoremap jj <ESC>
+map <F2> :NERDTreeToggle<CR>
 
+" Specific plugin set-up
+" ======================
+" dbext set-up
+let g:dbext_default_profile_spotid = 'type=MYSQL:host=localhost:user=stevetm:dbname=spotid'
+
+" Latest commands
+" ===============
+" Attempts to stop the annoying 
+" set dir=$TEMP
+" https://github.com/spf13/spf13-vim/issues/540
+set shortmess=at
+set cmdheight=2
 
 " save these commands to the end
 " ==============================

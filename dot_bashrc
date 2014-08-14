@@ -14,6 +14,9 @@ export MYHELLO="OK: Running .bashrc"
 # echo "OK: Current path: " $PATH
 # echo "OK: Set the path"
 
+# Use vi bindings, should enter insert mode by default
+set -o vi
+
 export PATH=/users/steve/code/scripts:$PATH
 
 # cd to the path of the front Finder window
