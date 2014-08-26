@@ -21,6 +21,8 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'vim-scripts/The-NERD-tree'
 Plugin 'myusuf3/numbers.vim'
 Plugin 'terryma/vim-multiple-cursors'
+Plugin 'epeli/slimux'
+" Plugin 'benmills/vimux'
 " Powerline should not be run from vundle AND pip simultaneously
 " Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 
@@ -34,7 +36,7 @@ Plugin 'vim-scripts/dbext.vim'
 Plugin 'vim-scripts/ZoomWin.vim'
 
 " send text from vim to running tmux session
-Plugin 'viershay/tslime.vim'
+" Plugin 'viershay/tslime.vim'
 
 
 " All of your Plugins must be added before the following line
@@ -176,19 +178,28 @@ colorscheme molokai
 let mapleader = " " " i.e. if you type <space> in normal mode then any key after that 
 inoremap jj <ESC>
 map <F2> :NERDTreeToggle<CR>
+map <F5> :SlimuxREPLSendSelection<CR>
+map <F6> :SlimuxREPLSendLine<CR>
 
 " Specific plugin set-up
 " ======================
 " dbext set-up
 let g:dbext_default_profile_spotid = 'type=MYSQL:host=localhost:user=stevetm:dbname=spotid'
 
+" comments
+" define standard new line comment in stata
+call tcomment#DefineType('stata', '* %s')
+
 " Latest commands
 " ===============
 " Attempts to stop the annoying 
-" set dir=$TEMP
+set dir=$TEMP
 " https://github.com/spf13/spf13-vim/issues/540
 set shortmess=at
 set cmdheight=2
+
+" Share the vim and the system clipboard
+set clipboard=unnamed
 
 " save these commands to the end
 " ==============================
