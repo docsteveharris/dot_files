@@ -1,3 +1,13 @@
 [user]
 	name = Steve Harris
-	email = doc@steveharris.me
+	email = git@steveharris.me
+[credential]
+	helper = osxkeychain
+[core]
+	excludesfile = /Users/steve/.gitignore_global
+[difftool "sourcetree"]
+	cmd = /usr/local/bin/ksdiff -w \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /usr/local/bin/ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true

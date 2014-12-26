@@ -1,35 +1,11 @@
 {
+	"caret_extra_bottom": 1,
+	"caret_extra_top": 1,
+	"caret_extra_width": 1,
 	"caret_style": "phase",
-	"color_scheme": "Packages/3024 Color Scheme/3024 Day.tmTheme",
-	"critic":
-	{
-		"auto_complete_commit_on_tab": true,
-		"auto_complete_with_fields": true,
-		"auto_match_enabled": true,
-		"caret_style": "smooth",
-		"color_scheme": "Packages/Critic Markup/Critic.tmTheme",
-		"draw_centered": false,
-		"extensions":
-		[
-			"mdown",
-			"mmd"
-		],
-		"font_face": "Triplicate T4c",
-		"font_options":
-		[
-			"subpixel_antialias",
-			"no_round",
-			"directwrite"
-		],
-		"font_size": 14,
-		"highlight_line": true,
-		"indent_subsequent_lines": true,
-		"line_padding_top": 0,
-		"match_header_hashes": false,
-		"translate_tabs_to_spaces": true,
-		"word_wrap": true,
-		"wrap_width": 80
-	},
+	"close_sidebar_if_opened": false,
+	"color_scheme": "Packages/Theme - Nil/Tubnil Bright.tmTheme",
+	"detect_slow_plugins": true,
 	"dictionary": "Packages/Language - English/en_GB.dic",
 	"flatland_sidebar_tree_small": true,
 	"flatland_sidebar_tree_xsmall": true,
@@ -46,43 +22,85 @@
 	"highlight_line": true,
 	"ignored_packages":
 	[
+		"GitGutter",
+		"DataConverter",
+		"Surround",
+		"Theme - Soda",
 		"PlainTasks",
-		"Markdown",
-		"BracketHighlighter",
+		"DistractionFreeWindow",
+		"Indent XML",
+		"Insert Equation",
+		"Table Cleaner",
+		"SFTP",
 		"Anaconda",
-		"Pandown",
+		"FileDiffs",
+		"Critic Markup",
+		"Open URL",
+		"Monokai Extended",
+		"Table of comments",
+		"Markdown",
+		"FindKeyConflicts",
+		"Theme - Phoenix",
+		"Figlet Big ASCII Text",
+		"SyntaxFold",
+		"Typewriter",
+		"Markdown Extended",
+		"VintageLines",
+		"Quick File Creator",
+		"Gist",
+		"Strapdown Markdown Preview",
+		"3024 Color Scheme",
 		"DashDoc",
 		"Better CoffeeScript",
-		"Open URL"
+		"Abacus",
+		"AcademicMarkdown",
+		"Theme - Spacegray",
+		"SublimeREPL",
+		"Color Scheme - Nice Blue Soda",
+		"Dayle Rees Color Schemes",
+		"View In Browser",
+		"Markdown Preview",
+		"Bash Build System",
+		"Glue",
+		"Vintage",
+		"BoundKeys",
+		"Themr",
+		"Vintage Surround",
+		"Pastel-Paws Color Scheme",
+		"Focus File on Sidebar",
+		"VintageousOrigami",
+		"Terminal"
 	],
+	"index_exclude_patterns":
+	[
+		"*.log",
+		"/Users/steve/aor/project-academic/collab-norad/data*",
+		".gitignore",
+		".dropbox",
+		"/Users/steve/aor/project-academic/collab-norad/outputs/tables*",
+		"/Users/steve/aor/project-academic/analysis-spot-study/vcode*"
+	],
+	"line_numbers": true,
 	"rulers":
 	[
 		72,
-		79
+		80
 	],
-	"theme": "freshcut.sublime-theme",
-	"todo":
-	{
-		"patterns":
-		{
-			"ASK": "ASK[\\s]*?:+(?P<ask>.*)$",
-			"CHANGED": "CHANGED[\\s]*?:+(?P<changed>\\S.*)$",
-			"DEBUGGING": "DEBUGGING[\\s]*?:+(?P<debugging>.*)$",
-			"FIXED": "FIXED[\\s]*?:+(?P<fixme>\\S.*)$",
-			"FIXME": "FIX ?ME[\\s]*?:+(?P<fixme>\\S.*)$",
-			"NOTE": "NOTE[\\s]*?:+(?P<note>.*)$",
-			"REFERENCE": "REFERENCE[\\s]*?:+(?P<reference>.*)$",
-			"SOMEDAY": "SOMEDAY[\\s]*?:+(?P<someday>.*)$",
-			"TODO": "TODO[\\s]*?:+(?P<todo>.*)$"
-		}
-	},
+	"theme": "Flatland Dark.sublime-theme",
 	"trailing_spaces_highlight_color": "caret",
-	"translate_tabs_to_spaces": false,
+	"translate_tabs_to_spaces": true,
 	"use_simple_full_screen": true,
-	"vintage_ctrl_keys": true,
-	"vintage_lines.force_mode": true,
 	"vintage_use_clipboard": true,
+	"vintageous_autoindent": true,
+	"vintageous_enable_cmdline_mode": true,
+	"vintageous_hlsearch": true,
+	"vintageous_ignorecase": true,
+	"vintageous_incsearch": false,
+	"vintageous_magic": true,
+	"vintageous_reset_mode_when_switching_tabs": true,
+	"vintageous_use_ctrl_keys": true,
+	"vintageous_use_sys_clipboard": true,
 	"wide_caret": true,
-	"word_wrap": "false",
-	"wrap_width": 78
+	"word_wrap": false,
+	"wrap_width": 72
 }

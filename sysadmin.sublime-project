@@ -2,16 +2,25 @@
 	"folders":
 	[
 		{
-			"follow_symlinks": true,
 			"path": "."
 		},
 		{
-			"follow_symlinks": true,
 			"path": "/Users/steve/usr/scripts"
 		},
 		{
-			"follow_symlinks": true,
 			"path": "/Users/steve/usr/github"
+		},
+		{
+			"path": "/Users/steve/usr/apps/Sublime Text 3"
+		},
+		{
+			"path": "/Users/steve/Library/Application Support/Sublime Text 3/Packages"
+		},
+		{
+			"path": "/Users/steve/usr/lib"
+		},
+		{
+			"path": "/Users/steve/usr/setup"
 		}
 	]
 }

@@ -1,9 +1,9 @@
 {
 // default settings
 
-  "open_tasks_bullet": "☐", // options: - | ❍ | ❑ | ■ | □ | ☐ | ▪ | ▫ | – | — ≡ → ›
-  "done_tasks_bullet": "✔", // options: + | ✓ | ✔
-  "cancelled_tasks_bullet": "✘", // options: x | ✘
+  "open_tasks_bullet": "-", // options: - | ❍ | ❑ | ■ | □ | ☐ | ▪ | ▫ | – | — ≡ → ›
+  "done_tasks_bullet": "+", // options: + | ✓ | ✔
+  "cancelled_tasks_bullet": "+", // options: x | ✘
   "before_tasks_bullet_margin": 1,
   "date_format": "(%y-%m-%d %H:%M)",
   "done_tag": true, // related to @cancelled as well
@@ -13,8 +13,17 @@
   "new_on_top": true, // how to sort archived tasks
 
   "color_scheme": "Packages/PlainTasks/tasks-gray.hidden-tmTheme",
-  "font_size": 14,
-  "font_face": "Ubuntu Mono",
+  // "color_scheme": "Packages/PlainTasks/tasks.hidden-tmTheme",
+    // other bundled schemes:
+    //   Packages/PlainTasks/tasks-dark.hidden-tmTheme
+    //   Packages/PlainTasks/tasks-eighties-dark.hidden-tmTheme
+    //   Packages/PlainTasks/tasks-gray.hidden-tmTheme
+    //   Packages/PlainTasks/tasks-monokai.hidden-tmTheme
+    //   Packages/PlainTasks/tasks-solarized-dark.hidden-tmTheme
+    //   Packages/PlainTasks/tasks-solarized-light.hidden-tmTheme
+  "font_size": 13,
+  "font_face": "Triplicate T4c",
+  // "font_face": "Consolas",
   "draw_indent_guides": false,
   "line_numbers": false,
   "gutter": true,

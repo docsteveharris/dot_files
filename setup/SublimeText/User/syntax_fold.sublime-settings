@@ -1,0 +1,31 @@
+{
+	"config":
+	[
+		{
+			"endMarker": "^##",
+			"name": "Markdown",
+			"startMarker": "(?m)#+.*"
+		},
+		{
+			"endMarker": "'#End",
+			"name": "Example",
+			"startMarker": "'#Section"
+		},
+		{
+			"endMarker": "#endregion",
+			"name": "C#",
+			"startMarker": "#region"
+		},
+		{
+			"endMarker": "#pragma endregion",
+			"name": "C+",
+			"startMarker": "#pragma region"
+		}
+	],
+	"default":
+	{
+		"endMarker": "\n##",
+		"name": "Default",
+		"startMarker": "\n##"
+	}
+}

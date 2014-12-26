@@ -31,12 +31,21 @@ Plugin 'croaky/vim-colors-github'
 Plugin 'daylerees/colour-schemes', { 'rtp': 'vim/' }
 Plugin 'tomasr/molokai'
 
+" work with csv files
+Plugin 'vim-scripts/csv.vim'
+
 " directly work with databases
 Plugin 'vim-scripts/dbext.vim'
 Plugin 'vim-scripts/ZoomWin.vim'
 
 " send text from vim to running tmux session
 " Plugin 'viershay/tslime.vim'
+" Plugin 'ervandew/screen'
+
+" Vitality - iTerm and tmux integration
+" - fix cursor within iTerm
+" - fix focus behaviour
+Plugin 'sjl/vitality.vim'
 
 
 " All of your Plugins must be added before the following line
@@ -200,6 +209,8 @@ set cmdheight=2
 
 " Share the vim and the system clipboard
 set clipboard=unnamed
+" http://superuser.com/questions/238362/enable-mouse-for-scrolling-only-in-vim-in-iterm-macosx
+set mouse=a
 
 " save these commands to the end
 " ==============================
