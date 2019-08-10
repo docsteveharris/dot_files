@@ -6,3 +6,7 @@ The /setup directory should contain a folder for each app that you have spent an
 
 140901
 Switched from vintage to vintageous
+2019-08-10
+created a master branch
+deleted all old stuff and osx specific stuff from this branch
+aiming to use this as a generic dot file approach

@@ -1,3 +1,0 @@
-[mysqld]
-datadir="/Volumes/Common/Research/(SPOT)light/19. Statistical Analysis/Data/Data/mysqldata"
-default-storage-engine=MyISAM
